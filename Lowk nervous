@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Until You Come to Japan ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe6f2, #e8f4ff);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #555;
+      text-align: center;
+    }
+
+    .box {
+      padding: 30px;
+      width: 85%;
+      max-width: 450px;
+    }
+
+    .heart {
+      font-size: 70px;
+      animation: pulse 1.5s infinite;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #ff6f9f;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    #countdown {
+      font-size: 28px;
+      font-weight: bold;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .label {
+      font-size: 13px;
+      color: #999;
+    }
+
+    .loading {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .dots::after {
+      content: "";
+      animation: dots 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    @keyframes dots {
+      0% { content: ""; }
+      33% { content: "."; }
+      66% { content: ".."; }
+      100% { content: "..."; }
+    }
+
+    .plane {
+      font-size: 35px;
+      margin: 15px;
+      animation: fly 3s infinite ease-in-out;
+    }
+
+    @keyframes fly {
+      0% { transform: translateX(-30px); }
+      50% { transform: translateX(30px); }
+      100% { transform: translateX(-30px); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="heart">❤️</div>
+
+    <h1>Waiting for you...</h1>
+
+    <div class="subtitle">
+      Until you come to Japan 🇯🇵
+    </div>
+
+    <div class="plane">✈️</div>
+
+    <div id="countdown">
+      Loading...
+    </div>
+
+    <div class="loading">
+      <span class="dots">Preparing your arrival</span>
+    </div>
+  </div>
+
+  <script>
+    // CHANGE THIS DATE LATER ❤️
+    const arrival = new Date("2026-12-01T12:00:00+09:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = arrival - now;
+
+      if (difference <= 0) {
+        document.getElementById("countdown").innerHTML =
+          "WELCOME TO JAPAN 🇯🇵❤️";
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
